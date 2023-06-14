@@ -56,6 +56,7 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
+            <Switch>
             <Route
               path="/about"
               element={<Aboutus mode={mode} text={text} />}
@@ -71,6 +72,7 @@ function App() {
                 />
               }
             />
+            </Switch>
           </Routes>
         </div>
       </Router>
