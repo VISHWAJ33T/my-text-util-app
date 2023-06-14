@@ -27,13 +27,14 @@ function App() {
       setText("white");
       document.body.style.backgroundColor = "#121212";
       showAlert("dark mode has been enabled", "success");
-      document.title = "TextUtils-Dark Mode";
+      
+      // document.title = "TextUtils-Dark Mode";
     } else {
       setMode("light");
       setText("gray");
       document.body.style.backgroundColor = "white";
       showAlert("light mode has been enabled", "success");
-      document.title = "TextUtils-Light Mode";
+      // document.title = "TextUtils-Light Mode";
     }
   };
   return (
@@ -46,15 +47,27 @@ function App() {
       <Aboutus  mode={mode} text={text}></Aboutus>
       </div> */}
       <Router>
-      <Navbar title="TextUtils" mode={mode} text={text} toggleMode={toggleMode}></Navbar>
-      <Alert alert={alert} />
+        <Navbar
+          title="TextUtils"
+          mode={mode}
+          text={text}
+          toggleMode={toggleMode}
+        ></Navbar>
+        <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route path="/about" element={<Aboutus mode={mode} text={text} />} />
+            <Route
+              path="/about"
+              element={<Aboutus mode={mode} text={text} />}
+            />
             <Route
               path="/"
               element={
-                <TextForm  showAlert={showAlert}   mode={mode} text={text}  heading="Enter the text to analyze"
+                <TextForm
+                  showAlert={showAlert}
+                  mode={mode}
+                  text={text}
+                  heading="Try TextUtils - Word Counter, Character Counter, Text to Speech out, Change case, Find and Replace"
                 />
               }
             />

@@ -32,45 +32,45 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
-  const [text, setText] = useState("Enter text here");
+  const [text, setText] = useState("An average person requires 0.128 minutes to read the sentence with 16 words and 94 characters.");
   // text = "new text here" //Wrong way to change this
   //   setText("new text here"); //Correct way to change this
   return (
     <>
       <div className="container">
-        <h3 className={`text-${props.mode==='dark'?'white':'dark'}`}>{props.heading}</h3>
+        <h2 className={`text-${props.mode==='dark'?'white':'dark'}`}>{props.heading}</h2>
         <div className="mb-3">
           <textarea
-            className={`form-control my-2 text-${props.text} bg-${props.text==='white'?'black':'white'}`}
+            className={`form-control my-2 text-${props.text} bg-${props.text==='white'?'dark':'white'}`}
             value={text}
             id="myBox"
             rows="8"
             onChange={handleOnChange}
           ></textarea>
         </div>
-          <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>
+          <button  disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>
             Convert to Uppercase
           </button>
-          <button className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>
+          <button  disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>
             Convert to Lowercase
           </button>
-          <button
+          <button disabled={text.length===0}
             type="submit"
             onClick={handleReplaceClick}
             className="btn btn-primary mx-1 my-1"
           >
             Find and Replace
           </button>
-          <button type="submit" onClick={speak} className="btn btn-primary mx-1 my-1">
+          <button disabled={text.length===0} type="submit" onClick={speak} className="btn btn-primary mx-1 my-1">
             Speak
           </button>
       </div>
       <div className="container my-3">
         <h3  className={`text-${props.mode==='dark'?'white':'dark'}`}>Your text Summary</h3>
         <p className={`text-${props.mode==='dark'?'white':'dark'}`}>
-          <b>{text.split(" ").length} words</b> and <b>{text.length} characters</b>
+          <b>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words</b> and <b>{text.length} characters</b>
         </p>
-        <p className={`text-${props.mode==='dark'?'white':'dark'}`}><b>{0.008 * text.split(" ").length} minutes</b> to read</p>
+        <p className={`text-${props.mode==='dark'?'white':'dark'}`}><b>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes</b> to read</p>
         <h4 className={`text-${props.mode==='dark'?'white':'dark'}`}>Preview</h4>
         <p className={`text-${props.mode==='dark'?'white':'dark'}`}>{text}</p>
       </div>
