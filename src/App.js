@@ -4,7 +4,7 @@ import TextForm from "./components/TextForm";
 import Aboutus from "./components/Aboutus";
 import Alert from "./components/Alert";
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState("light"); //Whether dark mode is enabled or not
@@ -56,7 +56,6 @@ function App() {
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Switch>
             <Route
               path="/about"
               element={<Aboutus mode={mode} text={text} />}
@@ -72,7 +71,6 @@ function App() {
                 />
               }
             />
-            </Switch>
           </Routes>
         </div>
       </Router>
